@@ -2,6 +2,7 @@
 #define CELLSIM_IO_NAMEDPIPE_HPP
 
 #include "base.hpp"
+#include <string>
 #include <string_view>
 #include <vector>
 #include <span>
@@ -32,7 +33,8 @@ namespace CellSim::IO
         ) noexcept;
 
         NamedPipe(
-            ::std::string_view name
+            const char* name,
+            int desiredAccess
         ) noexcept;
 
         NamedPipe(
@@ -51,6 +53,12 @@ namespace CellSim::IO
         bool IsInvalid(
         ) const noexcept;
 
+        template <class TContainer>
+        [[nodiscard]]
+        bool ReceiveData(
+            TContainer& container
+        ) noexcept;
+
         [[nodiscard]]
         bool SendDataUnsafe(
             size_t length,
@@ -67,16 +75,28 @@ namespace CellSim::IO
 
         [[nodiscard]]
         static bool Initialize(
-            ::std::string_view nameIn,
-            ::std::string_view nameOut
+            const char* nameIn,
+            const char* nameOut
+        ) noexcept;
+
+        [[nodiscard]]
+        static bool Receive(
+            ::std::string& str
+        ) noexcept;
+
+        [[nodiscard]]
+        static bool Receive(
+            ::std::vector<uint8_t>& vec
         ) noexcept;
 
         template <class T>
+        [[nodiscard]]
         static bool Send(
             ::std::span<T> const& span
         );
         
         template <class T>
+        [[nodiscard]]
         static bool Send(
             ::std::vector<T> const& vec
         );
@@ -86,6 +106,7 @@ namespace CellSim::IO
             ::std::nullptr_t
         ) = delete;
 
+        [[nodiscard]]
         static bool SendUnsafe(
             size_t length,
             void* p
@@ -99,6 +120,24 @@ namespace CellSim::IO
     ) noexcept
     {
         return s_isInitialized;
+    }
+
+    inline bool NamedPipe::Receive(
+        ::std::string& str
+    ) noexcept
+    {
+        return s_in.ReceiveData(
+            str
+        );
+    }
+
+    inline bool NamedPipe::Receive(
+        ::std::vector<uint8_t>& vec
+    ) noexcept
+    {
+        return s_in.ReceiveData(
+            vec
+        );
     }
 
     template <class T>
