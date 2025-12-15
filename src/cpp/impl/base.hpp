@@ -238,6 +238,12 @@ namespace CellSim::Containers
     class Span3;
 }
 
+/// @brief 
+namespace CellSim::Events
+{
+
+}
+
 namespace CellSim::Graphics
 {
     struct Color;
@@ -253,6 +259,7 @@ namespace CellSim::Imaging
 namespace CellSim::IO
 {
     class DirectoryCreater;
+    class NamedPipe;
 }
 
 /// @brief シミュレーションモデル

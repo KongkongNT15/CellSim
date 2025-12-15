@@ -55,6 +55,7 @@ set(SOURCES
     src/cpp/impl/CellSim.Graphics.Color.cpp
     src/cpp/impl/CellSim.Imaging.ImageHelper.cpp
     src/cpp/impl/CellSim.IO.DirectoryCreater.cpp
+    src/cpp/impl/CellSim.IO.NamedPipe.cpp
     src/cpp/impl/CellSim.Model.CellGrowthModel.cpp
     src/cpp/impl/CellSim.Model.CellSimulationModel.cpp
     src/cpp/impl/CellSim.Model.ClusterFormationModel.cpp
