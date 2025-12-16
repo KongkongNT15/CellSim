@@ -1,5 +1,12 @@
 ﻿#include "CellSim.IO.NamedPipe.hpp"
 
+#if CELLSIM_ENV_UNIX
+    #include <unistd.h>
+    #include <fcntl.h>
+    #include <sys/stat.h>
+    #include <sys/types.h>
+#endif
+
 namespace CellSim::IO
 {
     static NamedPipe s_in;
@@ -149,7 +156,142 @@ namespace CellSim::IO
         return result == TRUE;
     }
 #elif CELLSIM_ENV_UNIX
+    bool NamedPipe::Initialize(
+        const char* nameIn,
+        const char* nameOut
+    ) noexcept
+    {
+        if (s_isInitialized) [[unlikely]] return false;
+        if (!nameIn || !nameOut) [[unlikely]] return false;
 
+        s_in = NamedPipe(
+            nameIn,
+            O_RDONLY
+        );
+
+        s_out = NamedPipe(
+            nameOut,
+            O_WRONLY
+        );
+
+        if (s_in.IsInvalid() || s_out.IsInvalid()) return false;
+
+        s_isInitialized = true;
+
+        return true;
+    }
+
+    NamedPipe::NamedPipe(
+    ) noexcept
+        : m_handle(EOF)
+    {
+    }
+
+    NamedPipe::NamedPipe(
+        const char* name,
+        int desiredAccess
+    ) noexcept
+        : NamedPipe()
+    {
+        // ここで name は nullptr ではありません
+        int fd = ::open(
+            name,
+            desiredAccess
+        );
+
+        // 開けなかったよ
+        if (fd == EOF) return;
+
+        struct ::stat statbuf;
+
+        ::fstat(
+            fd,
+            &statbuf
+        );
+
+        // パイプじゃない何かを開いたよ
+        if (!S_ISFIFO(statbuf.st_mode)) return;
+    
+        m_handle = fd;
+    }
+
+    NamedPipe::~NamedPipe()
+    {
+        if (IsInvalid()) return;
+
+        ::close(m_handle);
+    }
+
+    NamedPipe& NamedPipe::operator=(
+        NamedPipe&& other
+    ) noexcept
+    {
+        if (&other != this) [[likely]] {
+            if (!IsInvalid()) ::close(m_handle);
+
+            m_handle = other.m_handle;
+
+            other.m_handle = EOF;
+        }
+
+        return *this;
+    }
+
+    bool NamedPipe::IsInvalid(
+    ) const noexcept
+    {
+        return m_handle == EOF;
+    }
+
+    template <class TContainer>
+    bool NamedPipe::ReceiveData(
+        TContainer& container
+    ) noexcept
+    {
+        uint32_t length;
+
+        ssize_t result = ::read(
+            m_handle,
+            &length,
+            sizeof(uint32_t)
+        );
+
+        if (result == EOF) return false;
+
+        container.resize(length);
+
+        result = ::read(
+            m_handle,
+            container.data(),
+            length
+        );
+
+        return result != EOF;
+    }
+
+    bool NamedPipe::SendDataUnsafe(
+        size_t length,
+        void* p
+    ) noexcept
+    {
+        uint32_t dLength = static_cast<uint32_t>(length);
+
+        ssize_t result = ::write(
+            m_handle,
+            &dLength,
+            sizeof(uint32_t)
+        );
+
+        if (result == EOF) return false;
+
+        result = ::write(
+            m_handle,
+            p,
+            length
+        );
+
+        return result != EOF;
+    }
 #endif
 
     template bool NamedPipe::ReceiveData(::std::string&);

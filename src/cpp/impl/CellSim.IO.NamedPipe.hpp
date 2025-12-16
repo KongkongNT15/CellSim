@@ -10,7 +10,7 @@
 #if CELLSIM_ENV_WINDOWS
     #include <Windows.h>
 #elif CELLSIM_ENV_UNIX
-
+    #include <unistd.h>
 #else
         static_assert(false, "class CellSim::IO::NamedPipe is not supported.");
 #endif
@@ -26,7 +26,7 @@ namespace CellSim::IO
 #if CELLSIM_ENV_WINDOWS
         ::HANDLE m_handle;
 #elif CELLSIM_ENV_UNIX
-
+        int m_handle;
 #endif
 
         NamedPipe(
