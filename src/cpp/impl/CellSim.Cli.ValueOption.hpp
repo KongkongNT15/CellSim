@@ -17,11 +17,16 @@ namespace CellSim::Cli
         ::std::string m_value;
 
         ValueOption() = default;
-        constexpr ValueOption(::std::string defaultValue) noexcept;
+
+        constexpr ValueOption(
+            ::std::string defaultValue
+        ) noexcept;
 
         public:
 
-        void AddValue(::std::string_view value) override;
+        void AddValue(
+            ::std::string_view value
+        ) override;
 
         constexpr bool HasValue() const noexcept override;
         constexpr bool IsRepeatable() const noexcept override;
@@ -34,12 +39,16 @@ namespace CellSim::Cli
 
 namespace CellSim::Cli
 {
-    constexpr ValueOption::ValueOption(::std::string defaultValue) noexcept
+    constexpr ValueOption::ValueOption(
+        ::std::string defaultValue
+    ) noexcept
         : m_value(::std::move(defaultValue))
     {
     }
 
-    inline void ValueOption::AddValue(::std::string_view value)
+    inline void ValueOption::AddValue(
+        ::std::string_view value
+    )
     {
         m_value = value;
     }

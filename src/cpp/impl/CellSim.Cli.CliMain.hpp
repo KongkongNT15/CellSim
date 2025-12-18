@@ -10,7 +10,11 @@ namespace CellSim::Cli
 
         CELLSIM_STATIC_CLASS(CliMain);
 
-        [[nodiscard]] static int Run(int argc, char** argv) noexcept;
+        [[nodiscard]]
+        static int Run(
+            int argc,
+            char** argv
+        ) noexcept;
     };
 }
 

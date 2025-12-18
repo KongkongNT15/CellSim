@@ -9,8 +9,8 @@
 
 namespace CellSim::IO
 {
-    static NamedPipe s_in;
-    static NamedPipe s_out;
+    NamedPipe NamedPipe::s_in;
+    NamedPipe NamedPipe::s_out;
 
 #if CELLSIM_ENV_WINDOWS
     bool NamedPipe::Initialize(

@@ -603,8 +603,8 @@ namespace CellSim
             << Version::Minor()
             << '.'
             << Version::Patch()
-            << ' '
-            << Version::Extension()
+            << '.'
+            << Version::Build()
             << ::std::endl;
         
         ofs << "Initial cell count      : "

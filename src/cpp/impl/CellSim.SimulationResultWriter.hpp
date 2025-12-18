@@ -27,7 +27,8 @@ namespace CellSim
         /// @param parentPath 
         /// @param extension 
         /// @return 
-        [[nodiscard]] static ::std::string s_createFilePath(
+        [[nodiscard]]
+        static ::std::string s_createFilePath(
             uint64_t step,
             uint32_t digits,
             ::std::string const& parentPath,
@@ -73,12 +74,14 @@ namespace CellSim
             uint64_t step
         ) const;
 
-        [[nodiscard]] ::cv::Mat m_createImage(
+        [[nodiscard]]
+        ::cv::Mat m_createImage(
             bool isTransparent,
             bool is4Channel
         ) const;
 
-        [[nodiscard]] ::cv::Mat m_drawCells(
+        [[nodiscard]]
+        ::cv::Mat m_drawCells(
             ::std::vector<Cells::Cell> const& cells
         ) const;
 

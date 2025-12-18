@@ -26,7 +26,9 @@ namespace CellSim
         , m_outputCsvMoleculePath()
         , m_outputImagePath()
     {
-        constexpr char pathSeparator = static_cast<char>(::std::filesystem::path::preferred_separator);
+        constexpr char pathSeparator = static_cast<char>(
+            ::std::filesystem::path::preferred_separator
+        );
 
         if (!m_outputPath.ends_with('\\') && !m_outputPath.ends_with('/')) {
             m_outputPath.push_back(pathSeparator);

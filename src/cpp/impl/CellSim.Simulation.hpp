@@ -87,11 +87,25 @@ namespace CellSim
 
         // プロパティ
         
-        [[nodiscard]] constexpr const CellAlgorithms::CellAlgorithm* CellAlgorithmPtr() const noexcept;
-        [[nodiscard]] constexpr const CellAlgorithms::CellList* CellListPtr() const noexcept;
-        [[nodiscard]] constexpr const Model::CellSimulationModel* CellSimulationModelPtr() const noexcept;
-        [[nodiscard]] constexpr ::std::vector<Cells::Cell> const& Cells() const noexcept;
-        [[nodiscard]] constexpr ::std::vector<Molecular::MoleculeField> const& Molecules() const noexcept;
+        [[nodiscard]]
+        constexpr const CellAlgorithms::CellAlgorithm*
+        CellAlgorithmPtr() const noexcept;
+
+        [[nodiscard]]
+        constexpr const CellAlgorithms::CellList*
+        CellListPtr() const noexcept;
+
+        [[nodiscard]]
+        constexpr const Model::CellSimulationModel*
+        CellSimulationModelPtr() const noexcept;
+
+        [[nodiscard]]
+        constexpr ::std::vector<Cells::Cell> const&
+        Cells() const noexcept;
+
+        [[nodiscard]]
+        constexpr ::std::vector<Molecular::MoleculeField> const&
+        Molecules() const noexcept;
 
         // メソッド
 

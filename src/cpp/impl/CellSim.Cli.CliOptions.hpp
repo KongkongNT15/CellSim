@@ -15,15 +15,28 @@ namespace CellSim::Cli
         CliOption* m_controllerOption;
 
         void m_activeOption();
-        void m_enableOption(int argc, char** argv);
+
+        void m_enableOption(
+            int argc,
+            char** argv
+        );
 
         public:
 
-        CliOptions(int argc, char** argv);
-        CliOptions(CliOptions const&) = delete;
+        CliOptions(
+            int argc,
+            char** argv
+        );
+
+        CliOptions(
+            CliOptions const&
+        ) = delete;
+
         ~CliOptions();
 
-        CliOptions& operator=(CliOptions const&) = delete;
+        CliOptions& operator=(
+            CliOptions const&
+        ) = delete;
 
         SimulationOption CreateSimulationOption() const;
 

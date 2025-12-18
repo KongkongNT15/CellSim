@@ -18,11 +18,16 @@ namespace CellSim::Cli
 
         constexpr ::std::string_view FullName() const noexcept override;
 
-        constexpr bool IsMatch(::std::string_view optionName) const noexcept override;
+        constexpr bool IsMatch(
+            ::std::string_view optionName
+        ) const noexcept override;
 
         constexpr ::std::string_view Names() const noexcept override;
 
-        void OnActive(const CliOptions* sender, CliOptionActivationArgs args) override;
+        void OnActive(
+            const CliOptions* sender,
+            CliOptionActivationArgs args
+        ) override;
 
         constexpr CliOptionType OptionType() const noexcept override;
 
@@ -37,7 +42,9 @@ namespace CellSim::Cli
         return s_fullName;
     }
 
-    constexpr bool VideoOption::IsMatch(::std::string_view optionName) const noexcept
+    constexpr bool VideoOption::IsMatch(
+        ::std::string_view optionName
+    ) const noexcept
     {
         using namespace std;
         return optionName == "-v"sv || optionName == "--video"sv;

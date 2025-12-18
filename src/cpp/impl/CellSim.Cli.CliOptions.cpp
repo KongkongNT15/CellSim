@@ -32,7 +32,10 @@ namespace CellSim::Cli
         }
     }
 
-    void CliOptions::m_enableOption(int argc, char** argv)
+    void CliOptions::m_enableOption(
+        int argc,
+        char** argv
+    )
     {
         for (int i = 1; i != argc; ++i) {
             ::std::string_view arg = argv[i];
@@ -45,7 +48,9 @@ namespace CellSim::Cli
                         if (m_controllerOption != nullptr && m_controllerOption != pair.second) [[unlikely]] {
                             throw ::std::runtime_error(
                                 Text::CString::Format(
-                                    Messages::Get("Cli.CliOptions.m_enableOption.Error.TakesControlError").c_str(),
+                                    Messages::Get(
+                                        "Cli.CliOptions.m_enableOption.Error.TakesControlError"
+                                    ).c_str(),
                                     m_controllerOption->Names().data(),
                                     pair.second->Names().data()
                                 )
@@ -63,7 +68,11 @@ namespace CellSim::Cli
                             s.append(pair.second->FullName());
                             s.push_back('\'');
 
-                            s.append(Messages::Get("Cli.CliOptions.m_enableOption.Error.ValueError"));
+                            s.append(
+                                Messages::Get(
+                                    "Cli.CliOptions.m_enableOption.Error.ValueError"
+                                )
+                            );
 
                             throw ::std::runtime_error(s);
                         }
@@ -78,7 +87,9 @@ namespace CellSim::Cli
             if (!isMatch) [[unlikely]] {
                 throw ::std::runtime_error(
                     Text::CString::Format(
-                        Messages::Get("Cli.CliOptions.m_enableOption.Error.MatchError").c_str(),
+                        Messages::Get(
+                            "Cli.CliOptions.m_enableOption.Error.MatchError"
+                        ).c_str(),
                         argv[i]
                     )
                 );

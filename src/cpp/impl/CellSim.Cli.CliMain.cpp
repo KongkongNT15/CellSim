@@ -8,7 +8,10 @@
 
 namespace CellSim::Cli
 {
-    int CliMain::Run(int argc, char** argv) noexcept
+    int CliMain::Run(
+        int argc,
+        char** argv
+    ) noexcept
     {
         ::printf(
             "CellSim %d.%d.%d %s\n",

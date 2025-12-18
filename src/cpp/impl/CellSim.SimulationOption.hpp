@@ -44,11 +44,20 @@ namespace CellSim
 
         public:
 
-        [[nodiscard]] static constexpr const char* BinName() noexcept;
-        [[nodiscard]] static constexpr const char* CellsName() noexcept;
-        [[nodiscard]] static constexpr const char* CsvName() noexcept;
-        [[nodiscard]] static constexpr const char* ImagesName() noexcept;
-        [[nodiscard]] static constexpr const char* MoleculesName() noexcept;
+        [[nodiscard]]
+        static constexpr const char* BinName() noexcept;
+
+        [[nodiscard]]
+        static constexpr const char* CellsName() noexcept;
+
+        [[nodiscard]]
+        static constexpr const char* CsvName() noexcept;
+
+        [[nodiscard]]
+        static constexpr const char* ImagesName() noexcept;
+
+        [[nodiscard]]
+        static constexpr const char* MoleculesName() noexcept;
 
         SimulationOption(
             bool isOutputBinary,
@@ -132,47 +141,56 @@ namespace CellSim
         return m_isOutputVideo;
     }
 
-    constexpr ::std::string const& SimulationOption::OutputPath() const noexcept
+    constexpr ::std::string const&
+    SimulationOption::OutputPath() const noexcept
     {
         return m_outputPath;
     }
 
-    constexpr ::std::string const& SimulationOption::OutputBinaryPath() const noexcept
+    constexpr ::std::string const&
+    SimulationOption::OutputBinaryPath() const noexcept
     {
         return m_outputBinaryPath;
     }
 
-    constexpr ::std::string const& SimulationOption::OutputBinaryCellPath() const noexcept
+    constexpr ::std::string const&
+    SimulationOption::OutputBinaryCellPath() const noexcept
     {
         return m_outputBinaryCellPath;
     }
 
-    constexpr ::std::string const& SimulationOption::OutputBinaryMoleculePath() const noexcept
+    constexpr ::std::string const&
+    SimulationOption::OutputBinaryMoleculePath() const noexcept
     {
         return m_outputBinaryMoleculePath;
     }
 
-    constexpr ::std::string const& SimulationOption::OutputCsvPath() const noexcept
+    constexpr ::std::string const&
+    SimulationOption::OutputCsvPath() const noexcept
     {
         return m_outputCsvPath;
     }
 
-    constexpr ::std::string const& SimulationOption::OutputCsvCellPath() const noexcept
+    constexpr ::std::string const&
+    SimulationOption::OutputCsvCellPath() const noexcept
     {
         return m_outputCsvCellPath;
     }
 
-    constexpr ::std::string const& SimulationOption::OutputCsvMoleculePath() const noexcept
+    constexpr ::std::string const&
+    SimulationOption::OutputCsvMoleculePath() const noexcept
     {
         return m_outputCsvMoleculePath;
     }
 
-    constexpr ::std::string const& SimulationOption::OutputImagePath() const noexcept
+    constexpr ::std::string const&
+    SimulationOption::OutputImagePath() const noexcept
     {
         return m_outputImagePath;
     }
 
-    constexpr ::std::string const& SimulationOption::OutputImageMoleculePath() const noexcept
+    constexpr ::std::string const&
+    SimulationOption::OutputImageMoleculePath() const noexcept
     {
         return m_outputImageMoleculePath;
     }

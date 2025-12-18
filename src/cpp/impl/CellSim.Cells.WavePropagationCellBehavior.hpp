@@ -7,8 +7,7 @@
 
 #include <map>
 
-#if 0 // コメント文
-
+/*
 812ページ目
 | 記号                                            | C++変数名                                          | 説明                     |
 | ---------------------------------------------- | ----------------------------------------------- | ---------------------- |
@@ -63,7 +62,7 @@ double m_michaelisConstantExtracellularPhosphodiesterase;
 double m_campTransportRateConstant;
 double m_atpConcentration;
 
-#endif // コメント文
+*/
 
 namespace CellSim::Cells
 {

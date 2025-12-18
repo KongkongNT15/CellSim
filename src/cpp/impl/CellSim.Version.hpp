@@ -9,7 +9,7 @@ namespace CellSim
     class Version final {
         private:
 
-        static constexpr const char s_extension[] = "";
+        static constexpr const char s_extension[] = " Beta 1";
 
         public:
 
@@ -18,6 +18,7 @@ namespace CellSim
         [[nodiscard]] static constexpr int Major() noexcept;
         [[nodiscard]] static constexpr int Minor() noexcept;
         [[nodiscard]] static constexpr int Patch() noexcept;
+        [[nodiscard]] static constexpr int Build() noexcept;
         [[nodiscard]] static constexpr const char* Extension() noexcept;
     };
 }
@@ -31,10 +32,15 @@ namespace CellSim
 
     constexpr int Version::Minor() noexcept
     {
-        return 1;
+        return 2;
     }
 
     constexpr int Version::Patch() noexcept
+    {
+        return 0;
+    }
+
+    constexpr int Version::Build() noexcept
     {
         return 2;
     }

@@ -17,20 +17,26 @@ namespace CellSim::Cli
 
         public:
 
-        void AddValue(::std::string_view value) override;
+        void AddValue(
+            ::std::string_view value
+        ) override;
 
         constexpr bool HasValue() const noexcept override;
         constexpr bool IsRepeatable() const noexcept override;
 
         ::std::string const& Value() const override;
 
-        constexpr ::std::vector<::std::string> const& Values() const noexcept override;
+        constexpr ::std::vector<::std::string> const&
+        Values(
+        ) const noexcept override;
     };
 }
 
 namespace CellSim::Cli
 {
-    inline void RepeatedValueOption::AddValue(::std::string_view value)
+    inline void RepeatedValueOption::AddValue(
+        ::std::string_view value
+    )
     {
         m_values.emplace_back(value.data(), value.size());
     }
@@ -45,7 +51,9 @@ namespace CellSim::Cli
         return true;
     }
 
-    constexpr ::std::vector<::std::string> const& RepeatedValueOption::Values() const noexcept
+    constexpr ::std::vector<::std::string> const&
+    RepeatedValueOption::Values(
+    ) const noexcept
     {
         return m_values;
     }

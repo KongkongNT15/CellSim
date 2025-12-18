@@ -293,7 +293,8 @@ namespace CellSim::Cells
         );
     }
 
-    constexpr ::std::vector<const Cell*> const& Cell::AttachedCells() const noexcept
+    constexpr ::std::vector<const Cell*> const&
+    Cell::AttachedCells() const noexcept
     {
         return m_attachedCells;
     }
