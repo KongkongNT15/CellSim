@@ -19,7 +19,7 @@ namespace CellSim::Model
         double reverseLambda
     ) const noexcept
     {
-        const double mass = targetMass + cellMass;
+        const double mass = targetMass * cellMass;
 
         return (
             -mass *
@@ -110,9 +110,20 @@ namespace CellSim::Model
                     Numerics::Vector3 diff = info.Position - cellInfo.Position;
                     double dist = diff.Length();
                     if (cellInfo.IsAlive) {
-                        vec1 += m_computeRemoteForce(diff, dist, info.Mass, cellInfo.Mass, params.ReverseLambda);
+                        vec1 += m_computeRemoteForce(
+                            diff,
+                            dist,
+                            info.Mass,
+                            cellInfo.Mass,
+                            params.ReverseLambda
+                        );
                     }
-                    vec2 += m_computeVolumeExclusion(diff, dist, info.Radius, cellInfo.Radius);
+                    vec2 += m_computeVolumeExclusion(
+                        diff,
+                        dist,
+                        info.Radius,
+                        cellInfo.Radius
+                    );
                 }
             )
 

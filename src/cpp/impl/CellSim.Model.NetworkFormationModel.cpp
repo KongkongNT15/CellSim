@@ -215,10 +215,12 @@ namespace CellSim::Model
 
                 const Numerics::Vector3 diff = info.Position - cellInfo.Position;
                 const double mass            = info.Mass * cellInfo.Mass;
+                const double dist            = diff.Length();
 
                 force3 += (
                     -mass *
-                    ::exp(-params.ReverseLambda)
+                    ::exp(-dist * params.ReverseLambda) /
+                    dist
                 ) * diff;
             }
         )
