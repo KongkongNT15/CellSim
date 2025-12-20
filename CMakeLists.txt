@@ -52,6 +52,8 @@ set(SOURCES
     src/cpp/impl/CellSim.Cli.SettingOption.cpp
     src/cpp/impl/CellSim.Cli.ValueOption.cpp
     src/cpp/impl/CellSim.Cli.VideoOption.cpp
+    src/cpp/impl/CellSim.Events.Event.cpp
+    src/cpp/impl/CellSim.Events.RemoveCellEvent.cpp
     src/cpp/impl/CellSim.Graphics.Color.cpp
     src/cpp/impl/CellSim.Imaging.ImageHelper.cpp
     src/cpp/impl/CellSim.IO.DirectoryCreater.cpp

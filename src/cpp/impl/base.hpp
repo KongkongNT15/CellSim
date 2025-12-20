@@ -238,10 +238,13 @@ namespace CellSim::Containers
     class Span3;
 }
 
-/// @brief 
+/// @brief イベント処理
 namespace CellSim::Events
 {
-
+    class Event;
+    struct EventArgs;
+    struct EventExpirationArgs;
+    class RemoveCellEvent;
 }
 
 namespace CellSim::Graphics
