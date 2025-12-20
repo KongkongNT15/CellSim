@@ -7,6 +7,8 @@
 #include "CellSim.Cells.Cell.hpp"
 #include "CellSim.Cells.CellInfo.hpp"
 
+#include <nlohmann/json_fwd.hpp>
+
 namespace CellSim::Events
 {
     class RemoveCellEvent : public Event {
@@ -14,6 +16,11 @@ namespace CellSim::Events
         uint32_t m_cellId;
         bool m_isDeleteCell;
         public:
+
+        [[nodiscard]]
+        static RemoveCellEvent* FromJson(
+            ::nlohmann::json const& j
+        );
 
         constexpr RemoveCellEvent(
             uint32_t cellId

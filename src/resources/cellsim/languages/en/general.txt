@@ -32,6 +32,8 @@ Cli.ParamSweepOption.CheckValue.Error.NotFound='--param-sweep' The specified par
 Cli.ParamSweepOption.CheckValue.Error.NotNumber='--param-sweep' The parameter must be number type.
 Cli.ParamSweepOption.Run.Error=The format of the '--param-sweep' is invalid.
 
+Events.RemoveCellEvent.FromJson.JsonError=The format of the 'RemoveCellEvent' is invalid.
+
 Model.CellSimulationModel.Params.FromJson.JsonError=The format of the 'cell.cells.modelParameters' parameter in the config file is invalid.
 Model.CellSimulationModel.Params.FromJson.TypeError=Invalid CellSim::Model::CellSimulationType value.
 Model.CellSimulationModel.FromType.Error=Invalid CellSim::Model::CellSimulationType value.

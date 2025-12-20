@@ -32,6 +32,8 @@ Cli.ParamSweepOption.CheckValue.Error.NotFound='--param-sweep' 指定された�
 Cli.ParamSweepOption.CheckValue.Error.NotNumber='--param-sweep' パラメータは数値型である必要があります。
 Cli.ParamSweepOption.Run.Error='--param-sweep'の形式が正しくありません。
 
+Events.RemoveCellEvent.FromJson.JsonError='RemoveCellEvent'の形式が正しくありません。
+
 Model.CellSimulationModel.Params.FromJson.JsonError=configファイルの'cell.cells.modelParameters'パラメータの形式が正しくありません。
 Model.CellSimulationModel.Params.FromJson.TypeError=無効なCellSim::Model::CellSimulationType値です。
 Model.CellSimulationModel.FromType.Error=無効なCellSim::Model::CellSimulationType値です。

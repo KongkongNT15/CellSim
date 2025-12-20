@@ -1,8 +1,9 @@
 ﻿# 更新履歴
 
-## [2.2.0] 2025-12-19
+## [2.2.0] 2025-12-21
 ### 新機能
 - NamedPipeを実装
+- イベントを実装
 ### 不具合修正
 - ClusterFormationModelとNetworkFormationModelの計算式が間違っている問題を修正
 

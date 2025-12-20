@@ -3,10 +3,17 @@
 
 #include "base.hpp"
 
+#include <nlohmann/json_fwd.hpp>
+
 namespace CellSim::Events
 {
     class Event {
         public:
+
+        [[nodiscard]]
+        static Event* FromJson(
+            ::nlohmann::json const& j
+        );
 
         virtual ~Event() = default;
 
