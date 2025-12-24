@@ -22,6 +22,7 @@ namespace CellSim::Events
         /// @return 
         [[nodiscard]]
         virtual bool IsExpired(
+            const Simulation* sender,
             EventExpirationArgs args
         ) = 0;
 

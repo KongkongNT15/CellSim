@@ -38,8 +38,9 @@ namespace CellSim::Cells
     )
     {
         // すでに名前が存在すればそのIdを返す
-        for (size_t index = 0;index != s_names.size(); ++index) {
-            if (s_names[index].Name == name) [[unlikely]] {
+        // と思っていたのか？
+        for (s_data const& data : s_names) {
+            if (data.Name == name) [[unlikely]] {
                 throw ::std::invalid_argument(
                     "AddNameに既に存在する名前が指定されました"
                 );

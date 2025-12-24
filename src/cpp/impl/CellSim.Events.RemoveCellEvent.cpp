@@ -31,6 +31,7 @@ namespace CellSim::Events
     }
 
     bool RemoveCellEvent::IsExpired(
+        const Simulation*,
         EventExpirationArgs
     )
     {

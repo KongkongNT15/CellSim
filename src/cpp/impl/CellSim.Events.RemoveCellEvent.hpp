@@ -35,6 +35,7 @@ namespace CellSim::Events
         constexpr uint32_t CellId() const noexcept;
 
         bool IsExpired(
+            const Simulation* sender,
             EventExpirationArgs args
         ) override;
 
