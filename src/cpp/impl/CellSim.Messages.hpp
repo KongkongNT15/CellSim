@@ -48,6 +48,10 @@ namespace CellSim
 
         static bool Initialize();
         [[nodiscard]] static bool IsInitialized() noexcept;
+
+        static void Show(
+            ::std::string const& name
+        ) noexcept;
     };
 }
 
@@ -63,6 +67,13 @@ namespace CellSim
     inline bool Messages::IsInitialized() noexcept
     {
         return s_loaded;
+    }
+
+    inline void Messages::Show(
+        ::std::string const& name
+    ) noexcept
+    {
+        ::puts(Get(name).c_str());
     }
 }
 

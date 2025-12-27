@@ -1,6 +1,7 @@
 ﻿#include "CellSim.CellAlgorithms.CellList.hpp"
 #include "CellSim.CellAlgorithms.CellAlgorithmAffectableCellQueryArgs.hpp"
 #include "CellSim.CellAlgorithms.CellAlgorithmStepArgs.hpp"
+#include "CellSim.Cells.CellCollection.hpp"
 #include "CellSim.Cells.CellInfo.hpp"
 #include "CellSim.Messages.hpp"
 #include "CellSim.Settings.Config.Simulation.hpp"
@@ -171,7 +172,7 @@ namespace CellSim::CellAlgorithms
     }
 
     void CellList::SetCells(
-        ::std::vector<Cells::Cell> const& cells
+        Cells::CellCollection const& cells
     ) noexcept
     {
         for (Cells::Cell const& cell : cells) {

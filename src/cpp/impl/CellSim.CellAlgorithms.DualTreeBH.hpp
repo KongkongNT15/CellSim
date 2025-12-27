@@ -14,7 +14,7 @@ namespace CellSim::CellAlgorithms
         Detail::Node root = Detail::Node();
 
         void insertCell(const Cells::Cell* c, Detail::Node* n);
-        void makeTree(const ::std::vector<Cells::Cell>& cells, Detail::Node& root);
+        void makeTree(const Cells::CellCollection& cells, Detail::Node& root);
         Cells::CellInfo calcGravity(Detail::Node& root);
         void calcAllAffectableCells(Detail::Node& root);
         void collectLeafNodes(Detail::Node* node, std::vector<Detail::Node*>& leafNodes);

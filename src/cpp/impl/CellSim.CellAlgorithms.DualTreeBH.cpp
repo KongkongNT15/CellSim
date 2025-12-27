@@ -2,6 +2,7 @@
 #include "CellSim.CellAlgorithms.DualTreeBH.hpp"
 #include "CellSim.CellAlgorithms.CellAlgorithmAffectableCellQueryArgs.hpp"
 #include "CellSim.CellAlgorithms.CellAlgorithmStepArgs.hpp"
+#include "CellSim.Cells.CellCollection.hpp"
 #include "CellSim.Cells.CellInfo.hpp"
 #include "CellSim.Settings.Config.CellAlgorithm.DualTreeBH.hpp"
 #include "CellSim.Threading.Generator.hpp"
@@ -40,7 +41,7 @@ namespace CellSim::CellAlgorithms {
         n->numCellsInSubTree++;
     }
 
-    void DualTreeBH::makeTree(const ::std::vector<Cells::Cell>& cells, Detail::Node& root)
+    void DualTreeBH::makeTree(const Cells::CellCollection& cells, Detail::Node& root)
     {
         for (const Cells::Cell& pCell : cells) {
             insertCell(&pCell, &root);

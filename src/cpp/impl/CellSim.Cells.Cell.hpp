@@ -8,6 +8,7 @@
 #include "CellSim.Numerics.Vector3T.hpp"
 
 #include <map>
+#include <span>
 #include <string>
 #include <vector>
 
@@ -21,16 +22,17 @@ namespace CellSim::Cells
 {
     /// @brief 細胞クラス
     class alignas(64) Cell final {
+        friend CellCollection;
         private:
 
         /// @brief ダミー細胞のID
-        static constexpr uint32_t s_dummyId = (uint32_t)-1;
+        static constexpr uint32_t s_dummyId = static_cast<uint32_t>(-1);
 
         /// @brief 各細胞に割り振るID
         static uint32_t s_id;
 
         /// @brief 接着している細胞のリスト
-        ::std::vector<const Cell*> m_attachedCells;
+        ::std::vector<Cell*> m_attachedCells;
 
         /// @brief ふるまい定義
         CellBehaviorPtr m_behaviorPtr;
@@ -111,7 +113,7 @@ namespace CellSim::Cells
         // プロパティ
 
         /// @brief 接着している細胞のリスト
-        [[nodiscard]] constexpr ::std::vector<const Cell*> const&
+        [[nodiscard]] constexpr ::std::span<const Cell* const>
         AttachedCells() const noexcept;
 
         /// @brief 接着している細胞の数
@@ -169,6 +171,12 @@ namespace CellSim::Cells
 
         // メソッド
 
+        /// @brief 接着
+        /// @param cell 接着する細胞
+        void AdhereUnsafe(
+            Cell& cell
+        );
+
         /// @brief 分子を追加
         /// @param kind 分子の種類
         /// @return 分子を追加したかどうか
@@ -182,16 +190,7 @@ namespace CellSim::Cells
         constexpr void ApplyForce(
             Numerics::Vector3 force
         ) noexcept;
-
-        /// @brief 接着
-        /// @param cell 接着する細胞
-        void Adhere(
-            Cell const& cell
-        );
-
-        /// @brief すべての細胞の接着を解除
-        constexpr void ClearAttachedCells() noexcept;
-
+        
         /// @brief 結合
         /// @param c 結合する細胞
         /// @note 結合すると引数に与えたcは無効になります
@@ -205,6 +204,10 @@ namespace CellSim::Cells
         /// @brief 分裂
         /// @return 分裂したもう1つの細胞
         [[nodiscard]] Cell Divide();
+
+        constexpr bool EraseAttachedCell(
+            Cell const& cell
+        ) noexcept;
 
         /// @brief 細胞が成長
         void Grow();
@@ -293,10 +296,19 @@ namespace CellSim::Cells
         );
     }
 
-    constexpr ::std::vector<const Cell*> const&
+    constexpr ::std::span<const Cell* const>
     Cell::AttachedCells() const noexcept
     {
-        return m_attachedCells;
+        auto begin = static_cast<const Cell* const*>(
+            m_attachedCells.data()
+        );
+
+        auto end = begin + m_attachedCells.size();
+        
+        return ::std::span<const Cell* const>(
+            begin,
+            end
+        );
     }
 
     constexpr size_t Cell::AttachedCellCount() const noexcept
@@ -399,21 +411,31 @@ namespace CellSim::Cells
         m_force += force;
     }
 
-    inline void Cell::Adhere(
-        Cell const& cell
+    inline void Cell::AdhereUnsafe(
+        Cell& cell
     )
     {
         m_attachedCells.push_back(&cell);
     }
 
-    constexpr void Cell::ClearAttachedCells() noexcept
-    {
-        m_attachedCells.clear();
-    }
-
     constexpr void Cell::Die() noexcept
     {
         m_isAlive = false;
+    }
+
+    constexpr bool Cell::EraseAttachedCell(
+        Cell const& cell
+    ) noexcept
+    {
+        for (auto itr = m_attachedCells.begin(), end = m_attachedCells.end(); itr != end; ++itr) {
+            if (*itr == &cell) {
+                m_attachedCells.erase(itr);
+
+                return true;
+            }
+        }
+
+        return false;
     }
 
     inline bool Cell::IsAdheringTo(

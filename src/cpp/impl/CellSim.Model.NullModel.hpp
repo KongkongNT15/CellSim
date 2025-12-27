@@ -29,7 +29,7 @@ namespace CellSim::Model
 
         constexpr void InitializeCells(
             const Simulation* sender,
-            ::std::vector<Cells::Cell>& cells
+            Cells::CellCollection& cells
         ) override;
 
         constexpr void OnAdvanceStep(
@@ -60,7 +60,7 @@ namespace CellSim::Model
 
     constexpr void NullModel::InitializeCells(
         const Simulation*,
-        ::std::vector<Cells::Cell>&
+        Cells::CellCollection&
     )
     {
     }

@@ -49,7 +49,7 @@ namespace CellSim
         void m_initialize();
 
         void m_saveBinaryCells(
-            ::std::vector<Cells::Cell> const& cells,
+            Cells::CellCollection const& cells,
             uint64_t step
         ) const;
 
@@ -59,7 +59,7 @@ namespace CellSim
         ) const;
 
         void m_saveCsvCells(
-            ::std::vector<Cells::Cell> const& cells,
+            Cells::CellCollection const& cells,
             uint64_t step
         ) const;
 
@@ -82,11 +82,11 @@ namespace CellSim
 
         [[nodiscard]]
         ::cv::Mat m_drawCells(
-            ::std::vector<Cells::Cell> const& cells
+            Cells::CellCollection const& cells
         ) const;
 
         void m_drawCells(
-            ::std::vector<Cells::Cell> const& cells,
+            Cells::CellCollection const& cells,
             ::cv::Mat& image
         ) const;
 

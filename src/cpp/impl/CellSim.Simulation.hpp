@@ -4,6 +4,7 @@
 #include "base.hpp"
 #include "CellSim.SimulationResultWriter.hpp"
 #include "CellSim.Cells.Cell.hpp"
+#include "CellSim.Cells.CellCollection.hpp"
 #include "CellSim.Molecular.MoleculeField.hpp"
 #include <vector>
 
@@ -21,7 +22,7 @@ namespace CellSim
         static inline constinit const Simulation* s_current = nullptr;
 
         /// @brief 細胞リスト
-        ::std::vector<Cells::Cell> m_cells;
+        Cells::CellCollection m_cells;
 
         /// @brief 設定
         ::nlohmann::json m_config;
@@ -100,7 +101,7 @@ namespace CellSim
         CellSimulationModelPtr() const noexcept;
 
         [[nodiscard]]
-        constexpr ::std::vector<Cells::Cell> const&
+        constexpr Cells::CellCollection const&
         Cells() const noexcept;
 
         [[nodiscard]]
@@ -139,7 +140,7 @@ namespace CellSim
         return m_pCellSimulationModel;
     }
 
-    constexpr ::std::vector<Cells::Cell> const&
+    constexpr Cells::CellCollection const&
     Simulation::Cells() const noexcept
     {
         return m_cells;

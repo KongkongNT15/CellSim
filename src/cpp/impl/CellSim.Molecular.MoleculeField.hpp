@@ -88,7 +88,7 @@ namespace CellSim::Molecular
         MoleculeField& operator=(MoleculeField&&) = default;
 
         void BeforeAdvanceStep(
-            ::std::vector<Cells::Cell> const& cells
+            Cells::CellCollection const& cells
         );
 
         [[nodiscard]] constexpr ::CellSim::Molecular::BoundaryCondition
@@ -123,7 +123,7 @@ namespace CellSim::Molecular
         /// @brief 分子の種類
         [[nodiscard]] constexpr MoleculeKind Kind() const noexcept;
 
-        void OnAdvanceStep(::std::vector<Cells::Cell> const& cells);
+        void OnAdvanceStep(Cells::CellCollection const& cells);
 
         [[nodiscard]] Numerics::GridPosition3 ToGridPosition3(
             Cells::Cell const& cell

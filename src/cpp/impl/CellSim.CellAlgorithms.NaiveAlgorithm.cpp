@@ -3,6 +3,7 @@
 #include "CellSim.CellAlgorithms.CellAlgorithmForceComputationArgs.hpp"
 #include "CellSim.CellAlgorithms.CellAlgorithmInteractionArgs.hpp"
 #include "CellSim.CellAlgorithms.CellAlgorithmStepArgs.hpp"
+#include "CellSim.Cells.CellCollection.hpp"
 #include "CellSim.Cells.CellInfo.hpp"
 #include "CellSim.Model.CellSimulationModel.hpp"
 #include "CellSim.Model.SimulationModelForceComputationArgs.hpp"
@@ -67,7 +68,7 @@ namespace CellSim::CellAlgorithms
     {
         ::std::vector<Cells::CellInfo> vec;
 
-        if (args.Cells->size() > 0) [[likely]] vec.reserve(args.Cells->size() - 1);
+        if (args.Cells->Length() > 0) [[likely]] vec.reserve(args.Cells->Length() - 1);
 
         for (Cells::Cell const& cell : *args.Cells) {
             if (&cell == args.Target) continue;

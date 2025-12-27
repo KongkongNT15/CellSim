@@ -47,7 +47,7 @@ namespace CellSim::Users
 
     void UserSimulationModel::InitializeCells(
         const Simulation* sender,
-        ::std::vector<Cells::Cell>& cells
+        Cells::CellCollection& cells
     )
     {
         // TODO: ユーザー定義の処理に変更します

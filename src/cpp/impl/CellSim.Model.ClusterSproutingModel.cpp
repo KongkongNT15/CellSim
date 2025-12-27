@@ -5,6 +5,7 @@
 #include "CellSim.CellAlgorithms.CellAlgorithmAffectableCellQueryArgs.hpp"
 #include "CellSim.Cells.Cell.hpp"
 #include "CellSim.Cells.CellBehaviorPtr.hpp"
+#include "CellSim.Cells.CellCollection.hpp"
 #include "CellSim.Cells.CellInfo.hpp"
 #include "CellSim.Numerics.Vector3T.hpp"
 #include "CellSim.Settings.Config.Cell.hpp"
@@ -105,9 +106,7 @@ namespace CellSim::Model
         SimulationModelStepArgs args
     )
     {
-        for (Cells::Cell& cell : *args.Cells) {
-            cell.ClearAttachedCells();
-        }
+        args.Cells->DetachAll();
 
         for (auto itr = args.Cells->begin(), end = args.Cells->end(); itr != end; ++itr) {
             Cells::Cell& cell1 = *itr;
@@ -122,8 +121,10 @@ namespace CellSim::Model
                 Numerics::Vector3 diff = cell1.Position() - cell2.Position();
                 
                 if (diff.SquareLength() < m_squareContactDistance) {
-                    cell1.Adhere(cell2);
-                    cell2.Adhere(cell1);
+                    Cells::CellCollection::AttachUnsafe(
+                        cell1,
+                        cell2
+                    );
                 }
             }
         }

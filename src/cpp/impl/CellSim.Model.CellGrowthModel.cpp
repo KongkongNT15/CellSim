@@ -3,6 +3,7 @@
 #include "CellSim.Model.SimulationModelStepArgs.hpp"
 #include "CellSim.Numerics.Vector3T.hpp"
 #include "CellSim.Messages.hpp"
+#include "CellSim.Cells.CellCollection.hpp"
 #include "CellSim.Cells.CellInfo.hpp"
 #include "CellSim.CellAlgorithms.CellAlgorithm.hpp"
 #include "CellSim.CellAlgorithms.CellAlgorithmAffectableCellQueryArgs.hpp"

@@ -8,12 +8,12 @@
 namespace CellSim::CellAlgorithms
 {
     struct CellAlgorithmInteractionArgs {
-        ::std::vector<Cells::Cell>* Cells;
+        Cells::CellCollection* Cells;
         ::std::vector<Molecular::MoleculeField>* Fields;
         const Model::CellSimulationModel* SimulationModel;
 
         constexpr CellAlgorithmInteractionArgs(
-            ::std::vector<Cells::Cell>* cells,
+            Cells::CellCollection* cells,
             ::std::vector<Molecular::MoleculeField>* fields,
             const Model::CellSimulationModel* simulationModel
         ) noexcept;
@@ -23,7 +23,7 @@ namespace CellSim::CellAlgorithms
 namespace CellSim::CellAlgorithms
 {
     constexpr CellAlgorithmInteractionArgs::CellAlgorithmInteractionArgs(
-        ::std::vector<Cells::Cell>* cells,
+        Cells::CellCollection* cells,
         ::std::vector<Molecular::MoleculeField>* fields,
         const Model::CellSimulationModel* simulationModel
     ) noexcept

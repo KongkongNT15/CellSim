@@ -8,13 +8,13 @@
 namespace CellSim::CellAlgorithms
 {
     struct CellAlgorithmAffectableCellQueryArgs {
-        const ::std::vector<Cells::Cell>* Cells;
+        const Cells::CellCollection* Cells;
         const ::std::vector<Molecular::MoleculeField>* Fields;
         const Cells::Cell* Target;
 
         constexpr CellAlgorithmAffectableCellQueryArgs(
             const Cells::Cell* target,
-            const ::std::vector<Cells::Cell>* cells,
+            const Cells::CellCollection* cells,
             const ::std::vector<Molecular::MoleculeField>* fields
         ) noexcept;
     };
@@ -24,7 +24,7 @@ namespace CellSim::CellAlgorithms
 {
     constexpr CellAlgorithmAffectableCellQueryArgs::CellAlgorithmAffectableCellQueryArgs(
         const Cells::Cell* target,
-        const ::std::vector<Cells::Cell>* cells,
+        const Cells::CellCollection* cells,
         const ::std::vector<Molecular::MoleculeField>* fields
     ) noexcept
         : Cells(cells)

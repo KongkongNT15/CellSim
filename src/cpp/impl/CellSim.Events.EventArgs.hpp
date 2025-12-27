@@ -8,12 +8,12 @@
 namespace CellSim::Events
 {
     struct EventArgs {
-        ::std::vector<Cells::Cell>* Cells;
+        Cells::CellCollection* Cells;
 
         ::std::vector<Molecular::MoleculeField>* Molecules;
 
         constexpr EventArgs(
-            ::std::vector<Cells::Cell>* cells,
+            Cells::CellCollection* cells,
             ::std::vector<Molecular::MoleculeField>* molecules
         ) noexcept;
     };
@@ -22,7 +22,7 @@ namespace CellSim::Events
 namespace CellSim::Events
 {
     constexpr EventArgs::EventArgs(
-        ::std::vector<Cells::Cell>* cells,
+        Cells::CellCollection* cells,
         ::std::vector<Molecular::MoleculeField>* molecules
     ) noexcept
         : Cells(cells)

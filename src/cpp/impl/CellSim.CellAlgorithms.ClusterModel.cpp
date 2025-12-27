@@ -3,12 +3,13 @@
 #include "CellSim.CellAlgorithms.CellAlgorithm.hpp"
 #include "CellSim.CellAlgorithms.CellList.hpp"
 #include "CellSim.Cells.Cell.hpp"
+#include "CellSim.Cells.CellCollection.hpp"
 #include "CellSim.Cells.CellInfo.hpp"
 
 namespace CellSim::CellAlgorithms
 {
     void ClusterModel::Combine(
-        ::std::vector<Cells::Cell>& cells,
+        Cells::CellCollection& cells,
         ::std::vector<Molecular::MoleculeField> const& fields,
         const CellList* pCellList
     )

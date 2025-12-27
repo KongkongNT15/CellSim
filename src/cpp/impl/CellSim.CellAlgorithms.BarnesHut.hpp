@@ -13,7 +13,7 @@ namespace CellSim::CellAlgorithms {
         Detail::Node root = Detail::Node();
 
         void insertCell(const Cells::Cell* c, Detail::Node* n);
-        void makeTree(const ::std::vector<Cells::Cell>& cells, Detail::Node& root);
+        void makeTree(const Cells::CellCollection& cells, Detail::Node& root);
         Cells::CellInfo calcGravity(Detail::Node& root);
         void selectAffectableCellsUsingBH(const Cells::Cell& c, const Detail::Node& root, ::std::vector<Cells::CellInfo>& list) const;
 

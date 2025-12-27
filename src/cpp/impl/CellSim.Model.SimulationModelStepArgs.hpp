@@ -9,11 +9,11 @@ namespace CellSim::Model
 {
     /// @brief BeforeAdvanceStep(), OnAdvanceStep()の引数
     struct SimulationModelStepArgs {
-        ::std::vector<Cells::Cell>* Cells;
+        Cells::CellCollection* Cells;
         const ::std::vector<Molecular::MoleculeField>* Fields;
 
         constexpr SimulationModelStepArgs(
-            ::std::vector<Cells::Cell>* cells,
+            Cells::CellCollection* cells,
             const ::std::vector<Molecular::MoleculeField>* fields
         ) noexcept;
     };
@@ -22,7 +22,7 @@ namespace CellSim::Model
 namespace CellSim::Model
 {
     constexpr SimulationModelStepArgs::SimulationModelStepArgs(
-        ::std::vector<Cells::Cell>* cells,
+        Cells::CellCollection* cells,
         const ::std::vector<Molecular::MoleculeField>* fields
     ) noexcept
         : Cells(cells)

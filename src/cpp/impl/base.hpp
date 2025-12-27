@@ -189,6 +189,7 @@ namespace CellSim::Cells
     class CellBehavior;
     class CellBehaviorPtr;
     enum class CellBehaviorType;
+    class CellCollection;
     struct CellCreateInfo;
     struct CellDivisionResult;
     struct CellGrowthResult;
@@ -244,6 +245,7 @@ namespace CellSim::Events
     class Event;
     struct EventArgs;
     struct EventExpirationArgs;
+    class EventManager;
     class RemoveCellEvent;
 }
 

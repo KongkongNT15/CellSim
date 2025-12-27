@@ -8,16 +8,16 @@
 namespace CellSim::Model
 {
     struct SimulationModelForceComputationArgs {
-        const ::std::vector<Cells::Cell>* AffectedCells;
+        const Cells::CellCollection* AffectedCells;
         const CellAlgorithms::CellAlgorithm* CellAlgorithm;
-        const ::std::vector<Cells::Cell>* Cells;
+        const Cells::CellCollection* Cells;
         const ::std::vector<Molecular::MoleculeField>* Fields;
         const Cells::Cell* Target;
 
         constexpr SimulationModelForceComputationArgs(
             const Cells::Cell* target,
-            const ::std::vector<Cells::Cell>* cells,
-            const ::std::vector<Cells::Cell>* affectedCells,
+            const Cells::CellCollection* cells,
+            const Cells::CellCollection* affectedCells,
             const ::std::vector<Molecular::MoleculeField>* fields,
             const CellAlgorithms::CellAlgorithm* cellAlgorithm
         ) noexcept;
@@ -28,8 +28,8 @@ namespace CellSim::Model
 {
     constexpr SimulationModelForceComputationArgs::SimulationModelForceComputationArgs(
         const Cells::Cell* target,
-        const ::std::vector<Cells::Cell>* cells,
-        const ::std::vector<Cells::Cell>* affectedCells,
+        const Cells::CellCollection* cells,
+        const Cells::CellCollection* affectedCells,
         const ::std::vector<Molecular::MoleculeField>* fields,
         const CellAlgorithms::CellAlgorithm* cellAlgorithm
     ) noexcept

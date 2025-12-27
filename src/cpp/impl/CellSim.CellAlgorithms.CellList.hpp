@@ -106,7 +106,7 @@ namespace CellSim::CellAlgorithms
         [[nodiscard]] constexpr double SearchRadius() const noexcept;
 
         void SetCells(
-            ::std::vector<Cells::Cell> const& cells
+            Cells::CellCollection const& cells
         ) noexcept;
         
         [[nodiscard]] Numerics::GridPosition3 ToGridPosition3(

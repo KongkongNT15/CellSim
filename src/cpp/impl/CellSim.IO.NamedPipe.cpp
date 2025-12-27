@@ -294,6 +294,6 @@ namespace CellSim::IO
     }
 #endif
 
-    template bool NamedPipe::ReceiveData(::std::string&);
-    template bool NamedPipe::ReceiveData(::std::vector<uint8_t>&);
+    template bool NamedPipe::ReceiveData(::std::string&) noexcept;
+    template bool NamedPipe::ReceiveData(::std::vector<uint8_t>&) noexcept;
 }

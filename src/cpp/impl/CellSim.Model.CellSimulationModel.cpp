@@ -8,6 +8,7 @@
 #include "CellSim.Model.NullModel.hpp"
 #include "CellSim.Messages.hpp"
 #include "CellSim.Cells.Cell.hpp"
+#include "CellSim.Cells.CellCollection.hpp"
 #include "CellSim.Settings.Config.Cell.hpp"
 #include "CellSim.Settings.Config.Simulation.hpp"
 #include "../CellSim.Users.UserSimulationModel.hpp"
@@ -44,7 +45,7 @@ namespace CellSim::Model
 
     void CellSimulationModel::InitializeCells(
         const Simulation*,
-        ::std::vector<Cells::Cell>& cells
+        Cells::CellCollection& cells
     )
     {
         ::std::mt19937 mt{ Settings::Config::Cell::InitialPlacementSeed() }; //乱数生成器(生成器はとりあえずメルセンヌ・ツイスタ)
@@ -65,7 +66,7 @@ namespace CellSim::Model
                     double x = r * ::cos(theta);
                     double y = r * ::sin(theta);
 
-                    cells.emplace_back(
+                    cells.Emplace(
                         info.Type,
                         pBehavior,
                         info.Mass,
@@ -85,7 +86,7 @@ namespace CellSim::Model
                     double y = ::sin(phi) * ::sin(theta) * initialPlacementRadius;
                     double z = ::cos(phi) * initialPlacementRadius;
 
-                    cells.emplace_back(
+                    cells.Emplace(
                         info.Type,
                         pBehavior,
                         info.Mass,

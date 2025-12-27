@@ -153,8 +153,7 @@ namespace CellSim
             if (m_pCellList != m_pCellAlgorithm) m_pCellList->ResetCells();
 
             // 無効になったオブジェクトを削除
-            ::std::erase_if(
-                m_cells,
+            m_cells.RemoveIf(
                 [](Cells::Cell const& cell) {
                     return cell.Type() == Cells::CellType::Invalid();
                 }
@@ -185,11 +184,11 @@ namespace CellSim
             }
 
             // 細胞分裂
-            for (size_t i = 0; i != m_cells.size(); i++) {
+            for (size_t i = 0; i != m_cells.Length(); i++) {
                 Cells::Cell& cell = m_cells[i];
 
                 if (cell.ShouldDivideThisStep()) {
-                    m_cells.push_back(cell.Divide());
+                    m_cells.Append(cell.Divide());
                 }
             }
         }

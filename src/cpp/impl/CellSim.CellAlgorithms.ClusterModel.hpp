@@ -14,18 +14,18 @@ namespace CellSim::CellAlgorithms
         CELLSIM_STATIC_CLASS(ClusterModel);
 
         static void Combine(
-            ::std::vector<Cells::Cell>& cells,
+            Cells::CellCollection& cells,
             ::std::vector<Molecular::MoleculeField> const& fields
         );
 
         static void Combine(
-            ::std::vector<Cells::Cell>& cells,
+            Cells::CellCollection& cells,
             ::std::vector<Molecular::MoleculeField> const& fields,
             const CellList* pCellList
         );
 
         static void Combine(
-            ::std::vector<Cells::Cell>& cells,
+            Cells::CellCollection& cells,
             ::std::vector<Molecular::MoleculeField> const& fields,
             ::std::nullptr_t
         );
@@ -36,7 +36,7 @@ namespace CellSim::CellAlgorithms
 namespace CellSim::CellAlgorithms
 {
     inline void ClusterModel::Combine(
-        ::std::vector<Cells::Cell>& cells,
+        Cells::CellCollection& cells,
         ::std::vector<Molecular::MoleculeField> const& fields
     )
     {
@@ -48,7 +48,7 @@ namespace CellSim::CellAlgorithms
     }
 
     inline void ClusterModel::Combine(
-        ::std::vector<Cells::Cell>& cells,
+        Cells::CellCollection& cells,
         ::std::vector<Molecular::MoleculeField> const& fields,
         ::std::nullptr_t
     )

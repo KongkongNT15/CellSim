@@ -60,7 +60,8 @@ namespace CellSim::CellAlgorithms
         return true;
     }
 
-    inline Threading::Generator<Cells::CellInfo> NullAlgorithm::IterateAffectableCellInfos(
+    inline Threading::Generator<Cells::CellInfo>
+    NullAlgorithm::IterateAffectableCellInfos(
         const Model::CellSimulationModel*,
         CellAlgorithmAffectableCellQueryArgs
     ) const

@@ -24,6 +24,12 @@ namespace CellSim::Model
             virtual ~Params() = default;
         };
 
+        static void InitializeFromCsv(
+            const Simulation* sender,
+            Cells::CellCollection& cells,
+            const char* filePath
+        );
+
         virtual ~CellSimulationModel() = default;
 
         /// @brief CellSimulationTypeからインスタンスを作成
@@ -55,7 +61,7 @@ namespace CellSim::Model
         /// @param cells リスト
         virtual void InitializeCells(
             const Simulation* sender,
-            ::std::vector<Cells::Cell>& cells
+            Cells::CellCollection& cells
         );
 
         /// @brief 後処理

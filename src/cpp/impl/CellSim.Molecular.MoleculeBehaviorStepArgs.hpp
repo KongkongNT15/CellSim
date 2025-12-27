@@ -8,10 +8,10 @@
 namespace CellSim::Molecular
 {
     struct MoleculeBehaviorStepArgs {
-        const ::std::vector<Cells::Cell>* Cells;
+        const Cells::CellCollection* Cells;
 
         constexpr MoleculeBehaviorStepArgs(
-            const ::std::vector<Cells::Cell>* cells
+            const Cells::CellCollection* cells
         ) noexcept;
     };
 }
@@ -19,7 +19,7 @@ namespace CellSim::Molecular
 namespace CellSim::Molecular
 {
     constexpr MoleculeBehaviorStepArgs::MoleculeBehaviorStepArgs(
-        const ::std::vector<Cells::Cell>* cells
+        const Cells::CellCollection* cells
     ) noexcept
         : Cells(cells)
     {

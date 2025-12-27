@@ -33,6 +33,7 @@ set(SOURCES
     src/cpp/impl/CellSim.CellAlgorithms.ParticleMesh.cpp
     src/cpp/impl/CellSim.Cells.Cell.cpp
     src/cpp/impl/CellSim.Cells.CellBehaviorPtr.cpp
+    src/cpp/impl/CellSim.Cells.CellCollection.cpp
     src/cpp/impl/CellSim.Cells.CellType.cpp
     src/cpp/impl/CellSim.Cells.MoleculeAwareCellBehavior.cpp
     src/cpp/impl/CellSim.Cells.NormalCellBehavior.cpp

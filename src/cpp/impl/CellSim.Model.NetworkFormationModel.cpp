@@ -4,6 +4,7 @@
 #include "CellSim.CellAlgorithms.CellAlgorithm.hpp"
 #include "CellSim.CellAlgorithms.CellAlgorithmAffectableCellQueryArgs.hpp"
 #include "CellSim.Cells.Cell.hpp"
+#include "CellSim.Cells.CellCollection.hpp"
 #include "CellSim.Numerics.Vector3T.hpp"
 #include "CellSim.Settings.Config.Simulation.hpp"
 #include "CellSim.Settings.Config.SimulationModel.NetworkFormation.hpp"
@@ -115,9 +116,7 @@ namespace CellSim::Model
         SimulationModelStepArgs args
     )
     {
-        for (Cells::Cell& cell : *args.Cells) {
-            cell.ClearAttachedCells();
-        }
+        args.Cells->DetachAll();
 
 // CellListとナイーブの切り替え
 #if 1
@@ -142,7 +141,7 @@ namespace CellSim::Model
                     {
                         if (!cellInfo.IsAlive) continue;
 
-                        cell1.Adhere(*cellInfo.CellPtr);
+                        cell1.AdhereUnsafe(const_cast<Cells::Cell&>(*cellInfo.CellPtr));
                         //cell2.Adhere(cell1);
                     }
                 )
@@ -225,7 +224,10 @@ namespace CellSim::Model
             }
         )
 
-        return params.AttractionFactor * force1 + params.AdhesiveRepulsionFactor * force2 + params.RemoteForceFactor * force3;
+        return 
+        params.AttractionFactor * force1 +
+        params.AdhesiveRepulsionFactor * force2 +
+        params.RemoteForceFactor * force3;
     }
 
     void NetworkFormationModel::OnAdvanceStep(

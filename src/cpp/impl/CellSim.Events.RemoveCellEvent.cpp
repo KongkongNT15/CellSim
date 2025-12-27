@@ -1,4 +1,5 @@
 ﻿#include "CellSim.Events.RemoveCellEvent.hpp"
+#include "CellSim.Cells.CellCollection.hpp"
 #include "CellSim.Events.EventArgs.hpp"
 #include "CellSim.Events.EventExpirationArgs.hpp"
 
@@ -43,14 +44,8 @@ namespace CellSim::Events
         EventArgs args
     )
     {
-        auto cells = *args.Cells;
-        for (auto itr = cells.begin(), end = cells.end(); itr != end; ++itr) {
-            if (itr->Id() == m_cellId) {
-                cells.erase(itr);
-                break;
-            }
-        }
-
+        args.Cells->Remove(m_cellId);
+        
         m_isDeleteCell = true;
     }
 }

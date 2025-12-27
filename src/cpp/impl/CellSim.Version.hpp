@@ -42,7 +42,7 @@ namespace CellSim
 
     constexpr int Version::Build() noexcept
     {
-        return 2;
+        return 12;
     }
 
     constexpr const char* Version::Extension() noexcept

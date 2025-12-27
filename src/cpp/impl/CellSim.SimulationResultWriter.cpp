@@ -2,6 +2,7 @@
 #include "CellSim.Simulation.hpp"
 #include "CellSim.CellAlgorithms.CellAlgorithmType.hpp"
 #include "CellSim.Cells.Cell.hpp"
+#include "CellSim.Cells.CellCollection.hpp"
 #include "CellSim.Cells.CellInfo.hpp"
 #include "CellSim.Imaging.ImageHelper.hpp"
 #include "CellSim.IO.DirectoryCreater.hpp"
@@ -72,7 +73,7 @@ namespace CellSim
     }
 
     void SimulationResultWriter::m_saveBinaryCells(
-        ::std::vector<Cells::Cell> const& cells,
+        Cells::CellCollection const& cells,
         uint64_t step
     ) const
     {
@@ -206,7 +207,7 @@ namespace CellSim
     }
 
     void SimulationResultWriter::m_saveCsvCells(
-        ::std::vector<Cells::Cell> const& cells,
+        Cells::CellCollection const& cells,
         uint64_t step
     ) const
     {
@@ -261,7 +262,7 @@ namespace CellSim
     }
 
     ::cv::Mat SimulationResultWriter::m_drawCells(
-        ::std::vector<Cells::Cell> const& cells
+        Cells::CellCollection const& cells
     ) const
     {
         ::cv::Mat image = m_createImage(false, false);
@@ -271,7 +272,7 @@ namespace CellSim
     }
 
     void SimulationResultWriter::m_drawCells(
-        ::std::vector<Cells::Cell> const& cells,
+        Cells::CellCollection const& cells,
         ::cv::Mat& image
     ) const
     {

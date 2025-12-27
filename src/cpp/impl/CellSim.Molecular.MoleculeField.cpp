@@ -83,7 +83,7 @@ namespace CellSim::Molecular
     }
 
     void MoleculeField::BeforeAdvanceStep(
-        ::std::vector<Cells::Cell> const& cells
+        Cells::CellCollection const& cells
     )
     {
         m_pBehavior->BeforeAdvanceStep(this, { &cells });
@@ -95,7 +95,7 @@ namespace CellSim::Molecular
     }
 
     void MoleculeField::OnAdvanceStep(
-        ::std::vector<Cells::Cell> const& cells
+        Cells::CellCollection const& cells
     )
     {
         m_pBehavior->OnAdvanceStep(this, { &cells });

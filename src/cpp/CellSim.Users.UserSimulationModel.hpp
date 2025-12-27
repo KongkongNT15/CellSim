@@ -31,7 +31,7 @@ namespace CellSim::Users
 
         void InitializeCells(
             const Simulation* sender,
-            ::std::vector<Cells::Cell>& cells
+            Cells::CellCollection& cells
         ) override;
 
         void OnAdvanceStep(
