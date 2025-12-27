@@ -38,46 +38,11 @@ cd build-scripts
 chmod +x build-linux.sh
 ./build-linux.sh
 ```
-<!--
-## C#の場合
-`Windows(x64)`の場合
-```sh
-dotnet publish src\cs\CellSim\CellSim.csproj -p:PublishProfile=Properties\PublishProfiles\win-x64.pubxml
-```
 
-`Windows(arm64)`の場合
-```sh
-dotnet publish src\cs\CellSim\CellSim.csproj -p:PublishProfile=Properties\PublishProfiles\win-arm64.pubxml
-```
-
-`macOS(Apple Silicon Mac)`の場合
-```sh
-dotnet publish src/cs/CellSim/cellsim-macos.csproj -p:PublishProfile=Properties/PublishProfiles/osx-arm64.pubxml
-```
-
-`macOS(Intel Mac)`の場合
-```sh
-dotnet publish src/cs/CellSim/cellsim-macos.csproj -p:PublishProfile=Properties/PublishProfiles/osx-x64.pubxml
-```
-
-`Linux(x64)`の場合
-```sh
-dotnet publish src/cs/CellSim/cellsim-linux.csproj -p:PublishProfile=Properties/PublishProfiles/linux-x64.pubxml
-```
-
-`Linux(arm64)`の場合
-```sh
-dotnet publish src/cs/CellSim/cellsim-linux.csproj -p:PublishProfile=Properties/PublishProfiles/linux-arm64.pubxml
-```
--->
 ## 実行ファイルの場所
-<!--### C++の場合-->
 `./build-scripts/build/bin/`に作られます。  
 MSVCでビルドされた場合は`./build-scripts/build/bin/Release/`に作られます。
-<!--
-### C#の場合
-`./cs-publish/`に作られます。
--->
+
 # コマンドラインオプション
 ### `-b` `--binary`
 実行結果を`.bin`ファイルとして出力します。
@@ -170,6 +135,13 @@ GUIツールと通信するための、書き込み用の名前付きパイプ�
 ```
 
 -->
+
+### `--load-cell-csv`
+cellの初期配置をCSVファイルから読み込みます
+**注意:** 設定ファイル(.json)は指定したCSVファイルを出力したときに使ったものを使用してください。
+```sh
+./cellsim -c ---laod-cell-csv "./output.csv"
+```
 
 ### `--no-clean-output`
 シミュレーション実行前に出力先のフォルダの中身を削除しないように指定します

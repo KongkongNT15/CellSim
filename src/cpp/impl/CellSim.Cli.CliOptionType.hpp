@@ -10,6 +10,7 @@ namespace CellSim::Cli
         Csv,
         Help,
         Image,
+        LoadCellCsv,
         NoCleanOutput,
         Output,
         Param,

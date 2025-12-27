@@ -86,11 +86,7 @@ namespace CellSim::Cli
                 ::std::string path = f(current);
 
                 SimulationOption option{
-                    args.Options->at(CliOptionType::Binary)->IsEnabled(),
-                    args.Options->at(CliOptionType::Csv)->IsEnabled(),
-                    args.Options->at(CliOptionType::Image)->IsEnabled(),
-                    args.Options->at(CliOptionType::Video)->IsEnabled(),
-                    !args.Options->at(CliOptionType::NoCleanOutput)->IsEnabled(),
+                    *args.Options,
                     ::std::move(path)
                 };
 

@@ -266,7 +266,19 @@ namespace CellSim
 
         m_initializeCellAlgorithm();
         
-        m_pCellSimulationModel->InitializeCells(this, m_cells);
+        if (m_writer.Option().IsInputCsvCell()) {
+            Model::CellSimulationModel::InitializeFromCsv(
+                this,
+                m_cells,
+                m_writer.Option().InputCsvCellPath().c_str()
+            );
+        }
+        else {
+            m_pCellSimulationModel->InitializeCells(
+                this,
+                m_cells
+            );
+        }
 
         for (Molecular::MoleculeCreateInfo const& info : Settings::Config::Molecular::MolecularConfigs()) {
             m_molecules.emplace_back(

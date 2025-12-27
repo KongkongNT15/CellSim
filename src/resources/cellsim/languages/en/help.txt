@@ -12,6 +12,7 @@ Options:
   -p, --param NAME=VAL    Override specified parameter(s) (multiple allowed)
   -s, --setting FILE      Specify the configuration file to use (default: ./config.json)
   -v, --video             Output the simulation result as a video file
+      --load-cell-csv     Load initial cell positions from a CSV file
       --no-clean-output   Do not empty the output directory before execution; keep existing contents
       --param-sweep EXPR  Execute simulations across a parameter range (multiple allowed) (e.g., cell.cells.0.cellCount=1000:2000:100)
 

@@ -11,6 +11,8 @@ Cells.Cell.Cell.Error.radius=The parameter 'radius' must be a positive value.
 Cells.CellBehaviorPtr.FromType.Error=Invalid CellSim::Cells::CellBehaviorType value.
 Cells.CellBehaviorPtr.FromPointer.Error=The argument 'ptr' was nullptr.
 
+Cells.CellCollection.FromCsv.Error.FileError=The CSV file specified for data initialization was not found.
+
 Cells.MoleculeAwareCellBehavior.MoleculeAwareCellBehavior.Error.cellDivisionRadius=The parameter 'cellDivisionRadius' must be a positive value.
 Cells.MoleculeAwareCellBehavior.MoleculeAwareCellBehavior.Error.synthesisRate=The parameter 'synthesisRate' must be a positive value.
 Cells.MoleculeAwareCellBehavior.MoleculeAwareCellBehavior.Error.degradationRate=The parameter 'degradationRate' must be a positive value.

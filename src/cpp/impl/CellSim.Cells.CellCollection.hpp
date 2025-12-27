@@ -34,6 +34,10 @@ namespace CellSim::Cells
             Cell& cell2
         ) noexcept;
 
+        static CellCollection FromCsv(
+            const char* filePath
+        );
+
         [[nodiscard]] constexpr Cell& operator[](size_t index) noexcept;
         [[nodiscard]] constexpr Cell const& operator[](size_t index) const noexcept;
 

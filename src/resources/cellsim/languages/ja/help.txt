@@ -12,6 +12,7 @@ Usage: cellsim [OPTIONS]
   -p, --param NAME=VAL    指定パラメータをオーバーライドします（複数指定可）
   -s, --setting FILE      使用する設定ファイルを指定します（既定: ./config.json）
   -v, --video             実行結果を動画ファイルとして出力します
+      --load-cell-csv     cellの初期配置をCSVファイルから読み込みます
       --no-clean-output   実行開始前に出力ディレクトリの中身を削除しないようにします
       --param-sweep EXPR  パラメータ範囲を順次実行します（複数指定可）（例: cell.cells.0.cellCount=1000:2000:100）
 

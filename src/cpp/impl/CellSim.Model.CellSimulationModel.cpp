@@ -43,6 +43,15 @@ namespace CellSim::Model
         }
     }
 
+    void CellSimulationModel::InitializeFromCsv(
+        const Simulation*,
+        Cells::CellCollection& cells,
+        const char* filePath
+    )
+    {
+        cells = Cells::CellCollection::FromCsv(filePath);
+    }
+
     void CellSimulationModel::InitializeCells(
         const Simulation*,
         Cells::CellCollection& cells

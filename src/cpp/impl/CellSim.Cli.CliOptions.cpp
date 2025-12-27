@@ -5,6 +5,7 @@
 #include "CellSim.Cli.CsvOption.hpp"
 #include "CellSim.Cli.HelpOption.hpp"
 #include "CellSim.Cli.ImageOption.hpp"
+#include "CellSim.Cli.LoadCellCsvOption.hpp"
 #include "CellSim.Cli.NoCleanOutputOption.hpp"
 #include "CellSim.Cli.OutputOption.hpp"
 #include "CellSim.Cli.ParamOption.hpp"
@@ -113,6 +114,7 @@ namespace CellSim::Cli
         addOption(new CsvOption());
         addOption(new HelpOption());
         addOption(new ImageOption());
+        addOption(new LoadCellCsvOption());
         addOption(new NoCleanOutputOption());
         addOption(new OutputOption());
         addOption(new ParamOption());
@@ -128,18 +130,6 @@ namespace CellSim::Cli
         for (auto pair : m_options) {
             delete pair.second;
         }
-    }
-
-    SimulationOption CliOptions::CreateSimulationOption() const
-    {
-        return SimulationOption(
-            m_options.at(CliOptionType::Binary)->IsEnabled(),
-            m_options.at(CliOptionType::Csv)->IsEnabled(),
-            m_options.at(CliOptionType::Image)->IsEnabled(),
-            m_options.at(CliOptionType::Video)->IsEnabled(),
-            !m_options.at(CliOptionType::NoCleanOutput)->IsEnabled(),
-            m_options.at(CliOptionType::Output)->Value()
-        );
     }
 
     void CliOptions::Run()
@@ -160,7 +150,7 @@ namespace CellSim::Cli
             }
 
             Simulation sim(
-                CreateSimulationOption(),
+                SimulationOption(m_options),
                 ::std::move(config)
             );
 

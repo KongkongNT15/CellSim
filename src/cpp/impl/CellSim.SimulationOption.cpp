@@ -1,5 +1,8 @@
 ﻿#include "CellSim.SimulationOption.hpp"
 #include "CellSim.IO.DirectoryCreater.hpp"
+#include "CellSim.Cli.CliOption.hpp"
+#include "CellSim.Cli.CliOptionType.hpp"
+
 #include <filesystem>
 
 namespace CellSim
@@ -10,6 +13,7 @@ namespace CellSim
         bool isOutputImage,
         bool isOutputVideo,
         bool cleanOutput,
+        ::std::string inputCsvCellPath,
         ::std::string outputPath
     )
         : m_isOutputBinary(isOutputBinary)
@@ -17,6 +21,7 @@ namespace CellSim
         , m_isOutputImage(isOutputImage)
         , m_isOutputVideo(isOutputVideo)
         , m_cleanOutput(cleanOutput)
+        , m_inputCsvCellPath(::std::move(inputCsvCellPath))
         , m_outputPath(::std::move(outputPath))
         , m_outputBinaryPath()
         , m_outputBinaryCellPath()
@@ -53,6 +58,37 @@ namespace CellSim
         m_outputCsvCellPath.push_back(pathSeparator);
         m_outputCsvMoleculePath.push_back(pathSeparator);
         m_outputImageMoleculePath.push_back(pathSeparator);
+    }
+
+    SimulationOption::SimulationOption(
+        const ::std::map<Cli::CliOptionType, Cli::CliOption*>& options
+    )
+        : SimulationOption(
+            options.at(Cli::CliOptionType::Binary)->IsEnabled(),
+            options.at(Cli::CliOptionType::Csv)->IsEnabled(),
+            options.at(Cli::CliOptionType::Image)->IsEnabled(),
+            options.at(Cli::CliOptionType::Video)->IsEnabled(),
+            !options.at(Cli::CliOptionType::NoCleanOutput)->IsEnabled(),
+            options.at(Cli::CliOptionType::LoadCellCsv)->Value(),
+            options.at(Cli::CliOptionType::Output)->Value()
+        )
+    {
+    }
+
+    SimulationOption::SimulationOption(
+        const ::std::map<Cli::CliOptionType, Cli::CliOption*>& options,
+        ::std::string outputPath
+    )
+        : SimulationOption(
+            options.at(Cli::CliOptionType::Binary)->IsEnabled(),
+            options.at(Cli::CliOptionType::Csv)->IsEnabled(),
+            options.at(Cli::CliOptionType::Image)->IsEnabled(),
+            options.at(Cli::CliOptionType::Video)->IsEnabled(),
+            !options.at(Cli::CliOptionType::NoCleanOutput)->IsEnabled(),
+            options.at(Cli::CliOptionType::LoadCellCsv)->Value(),
+            ::std::move(outputPath)
+        )
+    {
     }
 
     void SimulationOption::InitializeDirectories() const

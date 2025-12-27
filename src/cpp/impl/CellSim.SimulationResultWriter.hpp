@@ -117,6 +117,9 @@ namespace CellSim
             ::std::vector<Molecular::MoleculeField> const& fields
         );
 
+        [[nodiscard]]
+        constexpr SimulationOption const& Option() const noexcept;
+
         void Save(
             Simulation const& simulation,
             uint64_t step
@@ -152,6 +155,11 @@ namespace CellSim
         }
 
         return result;
+    }
+
+    constexpr SimulationOption const& SimulationResultWriter::Option() const noexcept
+    {
+        return m_option;
     }
 }
 

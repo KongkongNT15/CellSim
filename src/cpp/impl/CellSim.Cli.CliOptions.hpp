@@ -38,8 +38,6 @@ namespace CellSim::Cli
             CliOptions const&
         ) = delete;
 
-        SimulationOption CreateSimulationOption() const;
-
         void Run();
     };
 }

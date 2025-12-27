@@ -11,6 +11,8 @@ Cells.Cell.Cell.Error.radius=引数'radius'にゼロ以下の値が指定され�
 Cells.CellBehaviorPtr.FromType.Error=無効なCellSim::Cells::CellBehaviorType値です。
 Cells.CellBehaviorPtr.FromPointer.Error=引数'ptr'がnullptrでした。
 
+Cells.CellCollection.FromCsv.Error.FileError=細胞の初期化に指定されたCSVファイルが見つかりませんでした。
+
 Cells.MoleculeAwareCellBehavior.MoleculeAwareCellBehavior.Error.cellDivisionRadius=引数'cellDivisionRadius'にゼロ以下の値が指定されました。
 Cells.MoleculeAwareCellBehavior.MoleculeAwareCellBehavior.Error.synthesisRate=引数'synthesisRate'にゼロ以下の値が指定されました。
 Cells.MoleculeAwareCellBehavior.MoleculeAwareCellBehavior.Error.degradationRate=引数'degradationRate'にゼロ以下の値が指定されました。

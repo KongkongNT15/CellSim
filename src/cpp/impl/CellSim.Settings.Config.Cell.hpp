@@ -30,22 +30,28 @@ namespace CellSim::Settings
 
         // プロパティ
 
-        [[nodiscard]] static ::std::vector<Cells::CellCreateInfo> const& Cells() noexcept;
+        [[nodiscard]]
+        static ::std::vector<Cells::CellCreateInfo> const& Cells() noexcept;
 
         /// @brief 細胞の成長・分裂を有効にするかどうか
-        [[nodiscard]] static bool EnableGrowth() noexcept;
+        [[nodiscard]]
+        static bool EnableGrowth() noexcept;
 
         /// @brief 細胞が配置される円・球の半径
-        [[nodiscard]] static double InitialPlacementRadius() noexcept;
+        [[nodiscard]]
+        static double InitialPlacementRadius() noexcept;
 
         /// @brief 細胞の初期配置を決めるシード値
-        [[nodiscard]] static uint32_t InitialPlacementSeed() noexcept;
+        [[nodiscard]]
+        static uint32_t InitialPlacementSeed() noexcept;
 
         /// @brief 細胞が周囲の分子の影響を受けるかどうか
-        [[nodiscard]] static bool IsSensitiveToMolecules() noexcept;
+        [[nodiscard]]
+        static bool IsSensitiveToMolecules() noexcept;
 
         /// @brief 細胞の総数
-        [[nodiscard]] static uint64_t TotalCellCount() noexcept;
+        [[nodiscard]]
+        static uint64_t TotalCellCount() noexcept;
 
         // メソッド
 
@@ -57,7 +63,8 @@ namespace CellSim::Settings
 
 namespace CellSim::Settings
 {
-    inline ::std::vector<Cells::CellCreateInfo> const& Config::Cell::Cells() noexcept
+    inline ::std::vector<Cells::CellCreateInfo> const&
+    Config::Cell::Cells() noexcept
     {
         return s_cells;
     }

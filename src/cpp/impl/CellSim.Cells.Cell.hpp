@@ -23,13 +23,17 @@ namespace CellSim::Cells
     /// @brief 細胞クラス
     class alignas(64) Cell final {
         friend CellCollection;
+        public:
+
+        using IdType = uint32_t;
+
         private:
 
         /// @brief ダミー細胞のID
-        static constexpr uint32_t s_dummyId = static_cast<uint32_t>(-1);
+        static constexpr IdType s_dummyId = static_cast<IdType>(-1);
 
         /// @brief 各細胞に割り振るID
-        static uint32_t s_id;
+        static IdType s_id;
 
         /// @brief 接着している細胞のリスト
         ::std::vector<Cell*> m_attachedCells;
@@ -62,7 +66,7 @@ namespace CellSim::Cells
         CellType m_type;
 
         /// @brief 識別子
-        uint32_t m_id;
+        IdType m_id;
 
         /// @brief この細胞が生きているかどうか
         bool m_isAlive;
@@ -123,7 +127,7 @@ namespace CellSim::Cells
         [[nodiscard]] constexpr Numerics::Vector3 Force() const noexcept;
 
         /// @brief 識別子
-        [[nodiscard]] constexpr uint32_t Id() const noexcept;
+        [[nodiscard]] constexpr IdType Id() const noexcept;
 
         /// @brief 細胞内の分子の種類とその量
         [[nodiscard]] constexpr ::std::map<Molecular::MoleculeKind, double> const&
@@ -321,7 +325,7 @@ namespace CellSim::Cells
         return m_force;
     }
 
-    constexpr uint32_t Cell::Id() const noexcept
+    constexpr Cell::IdType Cell::Id() const noexcept
     {
         return m_id;
     }
