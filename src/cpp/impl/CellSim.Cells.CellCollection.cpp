@@ -51,7 +51,7 @@ namespace CellSim::Cells
         )
     {
         ::std::map<::std::string_view, Cells::CellBehaviorPtr> behaviorMap;
-        ::std::vector<::std::pair<Cell*, ::std::vector<Cell::IdType>>> attachedCells;
+        ::std::vector<::std::pair<Cell::IdType, ::std::vector<Cell::IdType>>> attachedCells;
         CellCollection collection;
 
         for (Cells::CellCreateInfo const& info : Settings::Config::Cell::Cells()) {
@@ -72,7 +72,7 @@ namespace CellSim::Cells
         // 1行目は無視
         while ((c = ifs.get()) != '\n' && c != EOF);
 
-        while (ifs) {
+        while (ifs.peek() != EOF) {
             Cell::IdType id;
             double mass;
             double radius;
@@ -143,7 +143,7 @@ namespace CellSim::Cells
 
             attachedCells.push_back(
                 {
-                    &cell,
+                    id,
                     {}
                 }
             );
@@ -163,7 +163,7 @@ namespace CellSim::Cells
 
         // 
         for (auto& pair : attachedCells) {
-            Cell& cell = *pair.first;
+            Cell& cell = *collection.GetCellPointer(pair.first);
             
             for (Cell::IdType cellId : pair.second) {
                 for (Cell& cell1 : collection) {

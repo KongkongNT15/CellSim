@@ -9,7 +9,7 @@ namespace CellSim
     class Version final {
         private:
 
-        static constexpr const char s_extension[] = "Alpha 1";
+        static constexpr const char s_extension[] = "Alpha 2";
 
         public:
 
@@ -42,7 +42,7 @@ namespace CellSim
 
     constexpr int Version::Build() noexcept
     {
-        return 14;
+        return 20;
     }
 
     constexpr const char* Version::Extension() noexcept
