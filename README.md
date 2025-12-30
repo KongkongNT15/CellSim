@@ -9,16 +9,10 @@
 - 環境によってOpenCVのビルドに失敗することがある
 
 # ビルド・動作要件
-<!--## C++の場合-->
 - C++20をサポートするコンパイラ
 - CMake (version 3.11~3.31)
 - Windows or macOS or Linux
-<!--
-## C#の場合
-- .NET 8 SDK
--->
 # ビルド方法
-<!--## C++の場合-->
 `Windows`の場合
 ```sh
 cd build-scripts
@@ -140,7 +134,7 @@ GUIツールと通信するための、書き込み用の名前付きパイプ�
 cellの初期配置をCSVファイルから読み込みます
 **注意:** 設定ファイル(.json)は指定したCSVファイルを出力したときに使ったものを使用してください。
 ```sh
-./cellsim -c ---laod-cell-csv "./output.csv"
+./cellsim -c ---load-cell-csv "./output.csv"
 ```
 
 ### `--no-clean-output`
